@@ -15,8 +15,10 @@ namespace FixsyWebApi.InstanceProvider
 
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
-            // Agregar una extensión que muestre el entorno actual
-            swaggerDoc.Info.Extensions.Add("x-environment", new OpenApiString(_environment));
+            if (!swaggerDoc.Info.Extensions.ContainsKey("x-environment"))
+            {
+                swaggerDoc.Info.Extensions.Add("x-environment", new OpenApiString(_environment));
+            }
         }
     }
 }
