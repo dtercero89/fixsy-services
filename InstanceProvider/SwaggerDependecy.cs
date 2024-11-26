@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace FixsyWebApi.InstanceProvider
 {
@@ -8,6 +9,10 @@ namespace FixsyWebApi.InstanceProvider
         {
             services.AddSwaggerGen(options =>
             {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",

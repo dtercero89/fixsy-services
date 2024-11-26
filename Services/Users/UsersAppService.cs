@@ -57,18 +57,6 @@ namespace FixsyWebApi.Services.Users
             return loginDto;
         }
 
-        private List<int> GetNewUserDefaultPermission()
-        {
-            var profilePermission = _repository.GetSingle<Data.Agg.Permission>(s=> s.Name == PermissionsNames.Profile);
-
-            if(profilePermission != null)
-            {
-                return new List<int> { profilePermission.PermissionId };
-            }
-
-            return new List<int>();
-        }
-
         private bool CanRegisterUser(UserDto userDto, out string validationMessage)
         {
             if (userDto is null)
