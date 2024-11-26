@@ -60,7 +60,7 @@ In the root directory of the backend project, locate the `appSettings.json` file
 Use Entity Framework Core to apply the database migrations:
 
 ```bash
-dotnet ef database update
+dotnet ef database update -c FixsyUnitOfWork
 ```
 
 ### 6. Start the Application
